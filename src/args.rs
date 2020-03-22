@@ -27,7 +27,7 @@ fn write_version() -> ResType<()> {
 
 fn write_help() -> ResType<()> {
     write_version()?;
-    writeln!(io::stdout(), "{}\n{}", AUTHOR, HELP)?;
+    write!(io::stdout(), "{}\n{}", AUTHOR, HELP)?;
     Ok(())
 }
 
