@@ -84,7 +84,7 @@ fn main_inner() -> ResType<()> {
 fn main() {
     match main_inner() {
         Err(ErrType::ArgExit) => (),
-        Err(err) => println!("{} {}", "error:".red(), err),
+        Err(err) => eprintln!("{} {}", "error:".bold().red(), err),
         _ => (),
     }
 }
