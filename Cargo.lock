@@ -71,7 +71,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "ipg"
+name = "hrp"
 version = "0.1.0"
 dependencies = [
  "colored",

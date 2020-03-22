@@ -2,6 +2,7 @@
 ** src/main.rs
 */
 
+mod args;
 mod err;
 
 use crate::err::{ErrType, ResType};
@@ -34,10 +35,6 @@ lazy_static! {
     };
 }
 
-fn _parse_args(_args: impl Iterator<Item=String>) -> String {
-    unimplemented!()
-}
-
 fn get_word() -> String {
     // get a random index into the index list
     let i = randombytes_uniform(INDICES.len() as u32);
@@ -58,12 +55,10 @@ fn main_inner() -> ResType<()> {
         .or_else(|_| Err(ErrType::sodiumoxide_init_error()))?;
 
     // parse command-line arguments, return the format string
-    // FIXME: unimplemented
-    // let fmt = parse_args(env::args().skip(1));
-    let fmt = "WWWDDDD";
+    let fmt = args::parse(env::args().skip(1))?;
 
     // track generated words to ensure uniqueness
-    let mut words: Vec<String> = vec![];
+    let mut words = Vec::with_capacity(8);
 
     for f in fmt.chars() {
         match f {
@@ -82,12 +77,13 @@ fn main_inner() -> ResType<()> {
             _   => return Err(ErrType::invalid_format_char(f)),
         }
     }
-    println!();
+    writeln!(io::stdout(), "")?;
     Ok(())
 }
 
 fn main() {
     match main_inner() {
+        Err(ErrType::ArgExit) => (),
         Err(err) => println!("{} {}", "error:".red(), err),
         _ => (),
     }

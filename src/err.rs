@@ -8,6 +8,7 @@ use std::io;
 pub type ResType<T> = Result<T, ErrType>;
 
 pub enum ErrType {
+    ArgExit,
     InvalidFormat(char),
     IO(io::Error),
     SodiumOxide(String),
@@ -32,6 +33,8 @@ impl From<io::Error> for ErrType {
 impl fmt::Display for ErrType {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
+            Self::ArgExit
+                => write!(f, "-h or -v argument encountered"),
             Self::InvalidFormat(ch)
                 => write!(f, "invalid format character: \"{}\"", ch),
             Self::IO(ioerr)
