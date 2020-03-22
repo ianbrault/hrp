@@ -26,8 +26,7 @@ static WORDS: &'static str = include_str!(
 
 lazy_static! {
     static ref INDICES: Vec<usize> = {
-        let indices_file = concat!(
-            env!("OUT_DIR"), "/indices.txt");
+        let indices_file = concat!(env!("OUT_DIR"), "/indices.txt");
         fs::read_to_string(indices_file).unwrap()
             .split("\n")
             .map(|s| s.parse::<usize>().unwrap())
@@ -62,7 +61,7 @@ fn main_inner() -> ResType<()> {
 
     for f in fmt.chars() {
         match f {
-            'W' => {
+            'w' | 'W' => {
                 let mut word = get_word();
                 // ensure word is unique
                 while words.iter().find(|&w| *w == word).is_some() {
@@ -71,7 +70,7 @@ fn main_inner() -> ResType<()> {
                 write!(io::stdout(), "{}", word)?;
                 words.push(word);
             },
-            'D' => {
+            'd' | 'D' => {
                 write!(io::stdout(), "{}", get_digit())?;
             },
             _   => return Err(ErrType::invalid_format_char(f)),

@@ -18,7 +18,7 @@ USAGE: hrp [OPTIONS] [FORMAT]
 ARGS:
     <FORMAT>    Specifies the format of the generated password. Can be provided
                 as a single string or multiple strings. Defaults to WWWDDDD.
-                Acceptable format characters are:
+                Acceptable format characters are (case-insensitive):
                     W - word
                     D - digit
 
