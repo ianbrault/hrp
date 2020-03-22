@@ -7,4 +7,4 @@ edition = "2018"
 [dependencies]
 colored = "1.9"
 lazy_static = "1.4"
-sodiumoxide = "0.2"
+sodiumoxide = "0.2.5"
