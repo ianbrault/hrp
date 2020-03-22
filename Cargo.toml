@@ -1,0 +1,10 @@
+[package]
+name = "ipg"
+version = "0.1.0"
+authors = ["Ian Brault <ian.brault@engineering.ucla.edu>"]
+edition = "2018"
+
+[dependencies]
+colored = "1.9"
+lazy_static = "1.4"
+sodiumoxide = "0.2"
