@@ -8,6 +8,7 @@ use std::path::Path;
 
 fn main() -> Result<(), Box<dyn std::error::Error + 'static>> {
     let base_dir = env::var("CARGO_MANIFEST_DIR")?;
+    let out_dir = env::var("OUT_DIR")?;
 
     //
     // generate indices for the dictionary words
@@ -16,8 +17,7 @@ fn main() -> Result<(), Box<dyn std::error::Error + 'static>> {
     let in_file = Path::new(&base_dir)
         .join("share")
         .join("google-10000-english-usa-no-swears-medium.txt");
-    let out_file = Path::new(&base_dir)
-        .join("share")
+    let out_file = Path::new(&out_dir)
         .join("indices.txt");
 
     let words = fs::read_to_string(&in_file)?;

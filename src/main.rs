@@ -27,7 +27,7 @@ static WORDS: &'static str = include_str!(
 lazy_static! {
     static ref INDICES: Vec<usize> = {
         let indices_file = concat!(
-            env!("CARGO_MANIFEST_DIR"), "/share/indices.txt");
+            env!("OUT_DIR"), "/indices.txt");
         fs::read_to_string(indices_file).unwrap()
             .split("\n")
             .map(|s| s.parse::<usize>().unwrap())
