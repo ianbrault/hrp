@@ -1,8 +1,15 @@
 [package]
 name = "hrp"
+description = "generate human-readable passwords"
 version = "0.1.0"
 authors = ["Ian Brault <ian.brault@engineering.ucla.edu>"]
 edition = "2018"
+repository = "https://github.com/ianbrault/hrp"
+documentation = "https://github.com/ianbrault/hrp"
+readme = "README.md"
+license = "GPL-3.0"
+categories = ["command-line-utilities", "cryptography"]
+keywords = ["password", "passwords", "generate"]
 
 [dependencies]
 colored = "1.9"
