@@ -12,6 +12,7 @@ use sodiumoxide::randombytes::randombytes_uniform;
 
 use std::env;
 use std::fs;
+use std::io::{self, Write};
 
 /*
 ** statically embed the word list and indices into the binary
@@ -72,11 +73,11 @@ fn main_inner() -> ResType<()> {
                 while words.iter().find(|&w| *w == word).is_some() {
                     word = get_word();
                 }
-                print!("{}", word);
+                write!(io::stdout(), "{}", word)?;
                 words.push(word);
             },
             'D' => {
-                print!("{}", get_digit());
+                write!(io::stdout(), "{}", get_digit())?;
             },
             _   => return Err(ErrType::invalid_format_char(f)),
         }
