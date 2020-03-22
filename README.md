@@ -1,3 +1,6 @@
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Crates.io](https://img.shields.io/crates/v/hrp.svg)](https://crates.io/crates/hrp)
+
 # hrp
 
 `hrp` generates **H**uman-**R**eadable **P**asswords
