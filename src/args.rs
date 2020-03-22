@@ -15,6 +15,13 @@ hrp generates human-readable passwords.
 
 USAGE: hrp [OPTIONS] [FORMAT]
 
+ARGS:
+    <FORMAT>    Specifies the format of the generated password. Can be provided
+                as a single string or multiple strings. Defaults to WWWDDDD.
+                Acceptable format characters are:
+                    W - word
+                    D - digit
+
 OPTIONS:
     -h, --help       Prints help information
     -v, --version    Prints version information
