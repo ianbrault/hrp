@@ -59,3 +59,16 @@ $ cargo build --release
 $ ./target/release/hrp --version
 hrp 0.1.2
 ```
+
+#### License
+
+<sup>
+Licensed under <a href="LICENSE">GNU General Public License, Version 3.0</a>
+</sup>
+<br/>
+<sub>
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+</sub>
