@@ -19,7 +19,7 @@ possible passwords.
 
 ```
 hrp 0.1.2
-Ian Brault <ian.brault@engineering.ucla.edu>
+Ian Brault <ian@brault.dev>
 
 hrp generates human-readable passwords.
 
