@@ -1,5 +1,19 @@
 /*
 ** src/main.rs
+**
+** Copyright (c) 2024 Ian Brault.
+**
+** This program is free software: you can redistribute it and/or modify
+** it under the terms of the GNU General Public License as published by
+** the Free Software Foundation, version 3.
+**
+** This program is distributed in the hope that it will be useful, but
+** WITHOUT ANY WARRANTY; without even the implied warranty of
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+** General Public License for more details.
+**
+** You should have received a copy of the GNU General Public License
+** along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
 mod args;
@@ -19,15 +33,16 @@ use std::io::{self, Write};
 ** statically embed the word list and indices into the binary
 */
 
-static WORDS: &'static str = include_str!(
-    concat!(
-        env!("CARGO_MANIFEST_DIR"),
-        "/share/google-10000-english-usa-no-swears-medium.txt"));
+static WORDS: &str = include_str!(concat!(
+    env!("CARGO_MANIFEST_DIR"),
+    "/share/google-10000-english-usa-no-swears-medium.txt"
+));
 
 lazy_static! {
     static ref INDICES: Vec<usize> = {
         let indices_file = concat!(env!("OUT_DIR"), "/indices.txt");
-        fs::read_to_string(indices_file).unwrap()
+        fs::read_to_string(indices_file)
+            .unwrap()
             .split("\n")
             .map(|s| s.parse::<usize>().unwrap())
             .collect()
@@ -50,8 +65,7 @@ fn get_digit() -> u8 {
 
 fn main_inner() -> ResType<()> {
     // initialize libsodium
-    sodiumoxide::init()
-        .or_else(|_| Err(ErrType::sodiumoxide_init_error()))?;
+    sodiumoxide::init().map_err(|_| ErrType::sodiumoxide_init_error())?;
 
     // parse command-line arguments, return the format string
     let fmt = args::parse(env::args().skip(1))?;
@@ -64,19 +78,19 @@ fn main_inner() -> ResType<()> {
             'w' | 'W' => {
                 let mut word = get_word();
                 // ensure word is unique
-                while words.iter().find(|&w| *w == word).is_some() {
+                while words.iter().any(|w| *w == word) {
                     word = get_word();
                 }
                 write!(io::stdout(), "{}", word)?;
                 words.push(word);
-            },
+            }
             'd' | 'D' => {
                 write!(io::stdout(), "{}", get_digit())?;
-            },
-            _   => return Err(ErrType::invalid_format_char(f)),
+            }
+            _ => return Err(ErrType::invalid_format_char(f)),
         }
     }
-    writeln!(io::stdout(), "")?;
+    writeln!(io::stdout())?;
     Ok(())
 }
 

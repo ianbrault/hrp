@@ -1,16 +1,30 @@
 /*
 ** src/args.rs
+**
+** Copyright (c) 2024 Ian Brault.
+**
+** This program is free software: you can redistribute it and/or modify
+** it under the terms of the GNU General Public License as published by
+** the Free Software Foundation, version 3.
+**
+** This program is distributed in the hope that it will be useful, but
+** WITHOUT ANY WARRANTY; without even the implied warranty of
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+** General Public License for more details.
+**
+** You should have received a copy of the GNU General Public License
+** along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
 use crate::err::{ErrType, ResType};
 
 use std::io::{self, Write};
 
-const PROGRAM: &'static str = env!("CARGO_PKG_NAME");
-const VERSION: &'static str = env!("CARGO_PKG_VERSION");
-const AUTHOR:  &'static str = env!("CARGO_PKG_AUTHORS");
+const PROGRAM: &str = env!("CARGO_PKG_NAME");
+const VERSION: &str = env!("CARGO_PKG_VERSION");
+const AUTHOR: &str = env!("CARGO_PKG_AUTHORS");
 
-const HELP: &'static str = r#"
+const HELP: &str = r#"
 hrp generates human-readable passwords.
 
 USAGE: hrp [OPTIONS] [FORMAT]
@@ -38,7 +52,7 @@ fn write_help() -> ResType<()> {
     Ok(())
 }
 
-pub fn parse(args: impl Iterator<Item=String>) -> ResType<String> {
+pub fn parse(args: impl Iterator<Item = String>) -> ResType<String> {
     let mut fmt = String::new();
 
     for arg in args {
@@ -46,7 +60,7 @@ pub fn parse(args: impl Iterator<Item=String>) -> ResType<String> {
             "-h" | "--help" => {
                 write_help()?;
                 Err(ErrType::ArgExit)?;
-            },
+            }
             "-v" | "--version" => {
                 write_version()?;
                 Err(ErrType::ArgExit)?;

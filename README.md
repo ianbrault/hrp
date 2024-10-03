@@ -1,5 +1,8 @@
 ## hrp
 
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Crates.io](https://img.shields.io/crates/v/hrp.svg)](https://crates.io/crates/hrp)
+
 `hrp` generates **H**uman-**R**eadable **P**asswords
 
 `hrp` uses [libsodium](https://libsodium.gitbook.io/doc/) (through
@@ -12,13 +15,10 @@ characters) English words, as determined by the Google Trillion Word Corpus.
 `hrp`'s default password format (`WWWDDDD`) results in 9,997,000,200,000,000
 possible passwords.
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Crates.io](https://img.shields.io/crates/v/hrp.svg)](https://crates.io/crates/hrp)
-
 ### Usage
 
 ```
-hrp 0.1.1
+hrp 0.1.2
 Ian Brault <ian.brault@engineering.ucla.edu>
 
 hrp generates human-readable passwords.
@@ -57,5 +57,5 @@ $ git clone https://github.com/ianbrault/hrp
 $ cd hrp
 $ cargo build --release
 $ ./target/release/hrp --version
-hrp 0.1.1
+hrp 0.1.2
 ```

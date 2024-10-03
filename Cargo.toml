@@ -1,9 +1,9 @@
 [package]
 name = "hrp"
 description = "generate human-readable passwords"
-version = "0.1.1"
-authors = ["Ian Brault <ian.brault@engineering.ucla.edu>"]
-edition = "2018"
+version = "0.1.2"
+authors = ["Ian Brault <ian@brault.dev>"]
+edition = "2021"
 repository = "https://github.com/ianbrault/hrp"
 documentation = "https://github.com/ianbrault/hrp"
 readme = "README.md"
@@ -12,6 +12,6 @@ categories = ["command-line-utilities", "cryptography"]
 keywords = ["password", "passwords", "generate"]
 
 [dependencies]
-colored = "1.9"
-lazy_static = "1.4"
-sodiumoxide = "0.2.5"
+colored = "2.1"
+lazy_static = "1.5"
+sodiumoxide = "0.2.7"
